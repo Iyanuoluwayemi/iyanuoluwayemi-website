@@ -1,17 +1,41 @@
-import { useState, useRef } from "react";
+import { useState, useRef, ReactNode } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { motion, useInView } from "motion/react";
 import { GlassCard } from "./GlassCard";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { ProjectModal } from "./ProjectModal";
 
-const projects = [
+interface Project {
+  id: number;
+  title: string;
+  category: string;
+  description: ReactNode;
+  image: string;
+  aspect: string;
+  behanceUrl?: string;
+}
+
+const projects: Project[] = [
   {
     id: 1,
     title: "Brand Identity Design for Stuboard",
-    category: "Visual Identity",
-    description:
-      "A complete brand identity system for Stuboard — from logo design and typography to color palettes and brand guidelines — built to establish trust, recognition, and a premium market position.",
+    category: "Visual Identity & Trust Architecture",
+    description: (
+      <div className="flex flex-col gap-4">
+        <div>
+          <strong className="block text-white text-[16px] sm:text-[18px] mb-1 font-['Manrope',sans-serif]">The Challenge:</strong>
+          <span className="text-[#A1A1AA]">Stuboard needed students to trust them with their most important asset: their academics.</span>
+        </div>
+        <div>
+          <strong className="block text-white text-[16px] sm:text-[18px] mb-1 font-['Manrope',sans-serif]">The Strategy:</strong>
+          <span className="text-[#A1A1AA]">I moved away from "corporate" and focused on "approachable authority." By using a strategic color palette and a student-centric visual system, we built an identity that made students feel safe entrusting their academic journey to the brand.</span>
+        </div>
+        <div>
+          <strong className="block text-[#BFFE5F] text-[16px] sm:text-[18px] mb-1 font-['Manrope',sans-serif]">Result:</strong>
+          <span className="text-[#A1A1AA]">Established Stuboard as the go-to, reliable authority for the student demographic.</span>
+        </div>
+      </div>
+    ),
     image:
       "https://4mrv3lw9pg.ucarecd.net/47a8a909-02a8-48f8-8de8-92de0174399e/-/preview/1000x900/",
     aspect: "square",
@@ -21,9 +45,23 @@ const projects = [
   {
     id: 2,
     title: "Social Media Campaign for CIH",
-    category: "Social Media Design",
-    description:
-      "A strategic social media campaign designed to boost brand visibility and audience engagement for CIH, raising awareness and driving meaningful interactions across platforms.",
+    category: "Strategic Social Campaign",
+    description: (
+      <div className="flex flex-col gap-4">
+        <div>
+          <strong className="block text-white text-[16px] sm:text-[18px] mb-1 font-['Manrope',sans-serif]">The Challenge:</strong>
+          <span className="text-[#A1A1AA]">Selling sales-growth training to busy MSME owners who are skeptical of "marketing fluff."</span>
+        </div>
+        <div>
+          <strong className="block text-white text-[16px] sm:text-[18px] mb-1 font-['Manrope',sans-serif]">The Strategy:</strong>
+          <span className="text-[#A1A1AA]">I didn't just design; I researched. By identifying exactly what keeps small business owners up at night, I used specific visual elements and high-contrast layouts to stop the scroll and speak their language.</span>
+        </div>
+        <div>
+          <strong className="block text-[#BFFE5F] text-[16px] sm:text-[18px] mb-1 font-['Manrope',sans-serif]">Result:</strong>
+          <span className="text-[#A1A1AA]">Successfully reached and converted 30 MSMEs in less than 2 weeks, proving the power of intent-matched design.</span>
+        </div>
+      </div>
+    ),
     image:
       "https://4mrv3lw9pg.ucarecd.net/436840ed-b8a4-4c5d-973d-54f245c60f4e/-/preview/800x1000/",
     aspect: "square",
@@ -31,9 +69,23 @@ const projects = [
   {
     id: 3,
     title: "Social Media Design for Chilled By T",
-    category: "Social Media Design",
-    description:
-      "Eye-catching social media content for Chilled By T, a local drink brand — designed to strengthen brand presence, increase visibility, and connect with a wider audience.",
+    category: "Packaging & Market Positioning",
+    description: (
+      <div className="flex flex-col gap-4">
+        <div>
+          <strong className="block text-white text-[16px] sm:text-[18px] mb-1 font-['Manrope',sans-serif]">The Challenge:</strong>
+          <span className="text-[#A1A1AA]">Rebranding a local Zobo drink to appeal to both students and office workers who value health as much as taste.</span>
+        </div>
+        <div>
+          <strong className="block text-white text-[16px] sm:text-[18px] mb-1 font-['Manrope',sans-serif]">The Strategy:</strong>
+          <span className="text-[#A1A1AA]">I handled the packaging and market entry strategy. The goal was twofold: trigger an instant "thirst" response while using clean, "safe" design cues to signal health-consciousness.</span>
+        </div>
+        <div>
+          <strong className="block text-[#BFFE5F] text-[16px] sm:text-[18px] mb-1 font-['Manrope',sans-serif]">Result:</strong>
+          <span className="text-[#A1A1AA]">Sales skyrocketed by 50% in the first week post-rebrand, reaching 250% growth within the first month through strategic market positioning.</span>
+        </div>
+      </div>
+    ),
     image:
       "https://4mrv3lw9pg.ucarecd.net/919f6870-136b-4dd7-a341-4f0d124b226a/-/preview/1000x1000/",
     aspect: "wide",
@@ -41,9 +93,7 @@ const projects = [
 ];
 
 export function SelectedWork() {
-  const [selectedProject, setSelectedProject] = useState<
-    (typeof projects)[0] | null
-  >(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
@@ -129,7 +179,7 @@ export function SelectedWork() {
                       >
                         {project.category}
                       </span>
-                      <p
+                      <div
                         className="text-[#A1A1AA] font-['Inter',sans-serif] max-w-3xl"
                         style={{
                           fontSize: "clamp(13px, 3vw, 14px)",
@@ -138,7 +188,7 @@ export function SelectedWork() {
                         }}
                       >
                         {project.description}
-                      </p>
+                      </div>
                     </div>
                   </div>
                 </GlassCard>

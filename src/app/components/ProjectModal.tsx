@@ -5,7 +5,7 @@ interface Project {
   id: number;
   title: string;
   category: string;
-  description: string;
+  description: React.ReactNode;
   image: string;
   behanceUrl?: string;
 }

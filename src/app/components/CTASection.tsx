@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { motion, useInView } from "motion/react";
+import { Link } from "react-router";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 export function CTASection() {
@@ -78,19 +79,21 @@ export function CTASection() {
               I'm here to help.
             </motion.p>
 
-            <motion.a
-              href="https://cal.com/theiyanuoluwayemi"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex px-8 py-4 sm:px-10 sm:py-5 bg-[#BFFE5F] text-[#02403D] rounded-full items-center gap-2 sm:gap-3 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_50px_rgba(191,254,95,0.4)] font-['Inter',sans-serif]"
-              style={{ fontSize: "clamp(15px, 3.5vw, 18px)", fontWeight: 700 }}
+            <motion.div
+              className="inline-flex"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.5 }}
             >
-              Start a Project
-              <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6" />
-            </motion.a>
+              <Link
+                to="/enquiry"
+                className="px-8 py-4 sm:px-10 sm:py-5 bg-[#BFFE5F] text-[#02403D] rounded-full flex items-center gap-2 sm:gap-3 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_50px_rgba(191,254,95,0.4)] font-['Inter',sans-serif]"
+                style={{ fontSize: "clamp(15px, 3.5vw, 18px)", fontWeight: 700 }}
+              >
+                Start a Project
+                <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6" />
+              </Link>
+            </motion.div>
           </div>
 
           {/* Image Section */}

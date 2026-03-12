@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
+import { Link } from "react-router";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 const profileUrl =
@@ -93,9 +94,9 @@ export function HeroSection() {
           View my work
           <ArrowUpRight className="w-5 h-5" />
         </button>
-        <button
-          onClick={() => scrollTo("contact")}
-          className="w-full sm:w-auto px-8 py-3.5 sm:py-4 rounded-full text-white transition-all duration-300 hover:scale-105 cursor-pointer font-['Inter',sans-serif]"
+        <Link
+          to="/enquiry"
+          className="w-full sm:w-auto px-8 py-3.5 sm:py-4 rounded-full text-white transition-all duration-300 hover:scale-105 cursor-pointer font-['Inter',sans-serif] text-center"
           style={{
             fontSize: "15px",
             fontWeight: 500,
@@ -107,7 +108,7 @@ export function HeroSection() {
           }}
         >
           Let's talk strategy
-        </button>
+        </Link>
       </motion.div>
     </section>
   );

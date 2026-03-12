@@ -26,6 +26,26 @@ const stickers = [
     src: "https://4mrv3lw9pg.ucarecd.net/c446f2da-a947-4ff3-93ca-0e07b5f3a8b6/kinspaul.png",
     alt: "Kinspaul",
   },
+  {
+    src: "https://4mrv3lw9pg.ucarecd.net/a4f8c16d-14bd-438d-aeb4-9a319cf6e8cf/ifera.png",
+    alt: "Ifera",
+  },
+  {
+    src: "https://4mrv3lw9pg.ucarecd.net/d1394609-2d1a-47f2-96b8-9282ef81a001/rosebud.png",
+    alt: "Rosebud",
+  },
+  {
+    src: "https://4mrv3lw9pg.ucarecd.net/a38f240b-99dc-4df0-911a-8d6245f9df43/kenspice.png",
+    alt: "Kenspice",
+  },
+  {
+    src: "https://4mrv3lw9pg.ucarecd.net/14763c73-8389-4e9c-a1bb-95fbb244353a/cih.png",
+    alt: "CIH",
+  },
+  {
+    src: "https://4mrv3lw9pg.ucarecd.net/00a982e1-adbf-45ed-b4d6-7d8b1ab15829/Nextgen.png",
+    alt: "Nextgen",
+  },
 ];
 
 export function InteractiveLogos() {
