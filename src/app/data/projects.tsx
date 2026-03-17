@@ -11,11 +11,110 @@ export interface Project {
 }
 
 export interface WorkCategory {
-  id: string; // Used in URL slug
+  id: string;
   title: string;
   subtitle: string;
   image: string;
 }
+
+export interface SocialBrand {
+  brandName: string;
+  subtitle: string;
+  images: string[];
+}
+
+export const SOCIAL_BRANDS: SocialBrand[] = [
+  {
+    brandName: "Cafe Innovate Hub",
+    subtitle: "Tech & Community Engagement Graphics",
+    images: [
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773728189/Coffee_Chat_w_Peter_IG_gclrcr.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773728131/Sell_Like_A_Pro_Challenge_hnuj2o.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773728098/Myth_vs_truth_7_ejyrel.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773728097/Myth_vs_truth_1_uk1dcy.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773728032/03_days_to_SLAP_nyav0s.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773727732/Coffee_Chat_x_Princess_Edokpay_ny7wtg.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773727737/Sell_Like_A_Pro_edited_pg6y3j.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773727740/Myth_vs_truth_5_hqj6n3.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773728027/Coffee_Chat_digitial_dividend_tzd8qp.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773728031/March_Edit_2_iqg12k.png",
+    ],
+  },
+  {
+    brandName: "Teesther",
+    subtitle: "Food & Pastries Promotional Content",
+    images: [
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773727611/Teesther_Ad_design_zdolc2.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773727606/Peanut_Design_crtmfd.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773727607/Delivery_Design_iljdfr.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773727613/Pastries_Design_wtnh3u.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773727617/Cakes_Design_jwtys6.png",
+    ],
+  },
+  {
+    brandName: "Stuboard",
+    subtitle: "EdTech App Launch & Student Campaigns",
+    images: [
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773727258/Our_App_Is_Live_1_meqcjq.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773727259/App_Giveaway_1_hg7u0e.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773727263/Chaos_et_Clarity_1_zniol2.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773727265/Own_Your_Semester_Design_jqmsg9.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773727266/Schooling_Design_1_xyfx4f.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773727270/Work_Done_Design_p8hhva.png",
+    ],
+  },
+  {
+    brandName: "Solacx",
+    subtitle: "Corporate Branding & Seasonal Social Campaigns",
+    images: [
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773726930/Feb_1st_dczoug.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773726926/February_11_yeddmz.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773726931/Merry_Christmas_rilt4a.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773726933/November_3_cslkcv.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773727299/BRanding_tt_LCustomer_vpvfod.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773728986/January_19_ccndc5.png",
+    ],
+  },
+  {
+    brandName: "Local Drink Brands (Slurp & Chilled By T)",
+    subtitle: "Beverage Marketing & Refreshment Campaigns",
+    images: [
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773727549/Smooth_Zobo_ezwmui.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773727565/Slurpy_Wednesday_Oct_22_cekngt.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773727567/Extra_Freshness_edit_skoeqy.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773727580/Oct_20_Slurpy_Monday_aorztx.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773727795/Slurpy_Wednesday_Oct_29_iw5wf5.png",
+    ],
+  },
+  {
+    brandName: "Kenspice",
+    subtitle: "Product Launches & Food Brand Marketing",
+    images: [
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773728958/November_New_MOnth_copy_l9ssed.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773728965/Launch_Kenspice_1_q2icmi.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773728971/New_Year_2026_m8ajtk.png",
+    ],
+  },
+  {
+    brandName: "Seak Ride",
+    subtitle: "Transport Service & Lifestyle Promos",
+    images: [
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773727961/Eid_Seak_Ride_as71hs.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773727949/November_New_MOnth_uuhuny.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773727993/Boyfriends_Day_Design_et4uag.png",
+    ],
+  },
+  {
+    brandName: "Rosebud",
+    subtitle: "Brand Evolution & Monthly Engagement Content",
+    images: [
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773729071/Rosebud_New_Month_1_lk8vxj.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773727877/WE_ve_Rebranded_amlk4c.png",
+      "https://res.cloudinary.com/dykvipays/image/upload/v1773727881/AUg-Dec_ym5vub.png",
+    ],
+  },
+];
+
 
 export const WORK_CATEGORIES: WorkCategory[] = [
   {
@@ -32,7 +131,7 @@ export const WORK_CATEGORIES: WorkCategory[] = [
   },
   {
     id: "youtube-thumbnail",
-    title: "YouTube Thumbnail",
+    title: "Thumbnails & Banner Designs",
     subtitle: "High-Converting Covers",
     image: "https://4mrv3lw9pg.ucarecd.net/60f2af7f-1f22-438e-84b3-77bdc3d3d2f3/-/preview/1000x562/",
   },
