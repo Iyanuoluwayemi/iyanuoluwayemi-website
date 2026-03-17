@@ -1,14 +1,7 @@
 import { X, ExternalLink } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
-interface Project {
-  id: number;
-  title: string;
-  category: string;
-  description: React.ReactNode;
-  image: string;
-  behanceUrl?: string;
-}
+import { Project } from "../data/projects";
 
 interface ProjectModalProps {
   project: Project | null;
