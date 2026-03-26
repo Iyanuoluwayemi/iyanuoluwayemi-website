@@ -1,4 +1,4 @@
-import { GlowingOrbs } from "../components/GlowingOrbs";
+import Grainient from "../components/Grainient";
 import { Navigation } from "../components/Navigation";
 import { HeroSection } from "../components/HeroSection";
 import { SkillsMarquee } from "../components/SkillsMarquee";
@@ -39,18 +39,44 @@ export default function Home() {
         }
       `}</style>
 
-      <GlowingOrbs />
-      <Navigation />
-      <main className="w-full">
-        <HeroSection />
-        <SkillsMarquee />
-        <AboutMe />
-        <SelectedWork />
-        <Services />
-        <CTASection />
-        <InteractiveLogos />
-      </main>
-      <Footer />
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <Grainient
+          color1="#023331"
+          color2="#000000"
+          color3="#bffe5f"
+          timeSpeed={1.45}
+          colorBalance={0.07}
+          warpStrength={1}
+          warpFrequency={7.4}
+          warpSpeed={3.9}
+          warpAmplitude={50}
+          blendAngle={0}
+          blendSoftness={0.49}
+          rotationAmount={500}
+          noiseScale={2.4}
+          grainAmount={0.03}
+          grainScale={1.6}
+          grainAnimated={false}
+        />
+      </div>
+      
+      <div className="relative z-10 flex flex-col min-h-screen">
+        <Navigation />
+        <main className="w-full">
+          <HeroSection />
+          <div className="bg-[#030803]/95">
+            <SkillsMarquee />
+            <AboutMe />
+            <SelectedWork />
+            <Services />
+            <CTASection />
+            <InteractiveLogos />
+          </div>
+        </main>
+        <div className="bg-[#000000]/95">
+          <Footer />
+        </div>
+      </div>
     </div>
   );
 }

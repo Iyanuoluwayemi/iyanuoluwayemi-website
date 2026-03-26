@@ -1,185 +1,88 @@
-import { useState, useEffect, useRef } from "react";
-import { motion, useInView } from "motion/react";
-import { GlassCard } from "./GlassCard";
+import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router';
+import { ArrowRight, Globe } from 'lucide-react';
 
-function CountUp({
-  target,
-  suffix = "",
-  duration = 2000,
-  start = false,
-}: {
-  target: number;
-  suffix?: string;
-  duration?: number;
-  start: boolean;
-}) {
-  const [count, setCount] = useState(0);
+// --- 1. ANIMATED STAT COMPONENT ---
+export const AnimatedStat = ({ end, label, prefix = '', suffix = '' }: any) => {
+  const [value, setValue] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!start) return;
-    let startTime: number | null = null;
-    let raf: number;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          let start = 0;
+          const duration = 2000;
+          const startTime = performance.now();
 
-    const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.round(eased * target));
-      if (progress < 1) {
-        raf = requestAnimationFrame(animate);
-      }
-    };
-
-    raf = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(raf);
-  }, [start, target, duration]);
-
-  return (
-    <span>
-      {count}
-      {suffix}
-    </span>
-  );
-}
-
-const stats = [
-  { value: 5, suffix: "+", label: "Years Experience" },
-  { value: 30, suffix: "+", label: "Brands Elevated" },
-  { value: 0, suffix: "", label: "Focused Design", text: "ROI" },
-];
-
-export function AboutMe() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
-
-  const statsRef = useRef<HTMLDivElement>(null);
-  const statsInView = useInView(statsRef, { once: true, margin: "-30px" });
+          const animate = (currentTime: number) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const easeProgress = progress * (2 - progress);
+            setValue(Math.floor(easeProgress * end));
+            if (progress < 1) requestAnimationFrame(animate);
+          };
+          requestAnimationFrame(animate);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.5 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [end]);
 
   return (
-    <motion.section
-      id="about"
-      className="relative z-10 px-4 sm:px-6 py-14 sm:py-20 md:py-24"
-      ref={sectionRef}
-      initial={{ opacity: 0, y: 60 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-    >
-      <div className="max-w-[1200px] mx-auto">
-        <GlassCard className="p-5 sm:p-8 md:p-12 lg:p-16" hover={false}>
-          <div className="flex flex-col lg:flex-row gap-8 md:gap-12 items-center">
-            {/* Text Content */}
-            <div className="flex-1 min-w-0">
-              <motion.span
-                className="text-[#BFFE5F] font-['Inter',sans-serif] uppercase tracking-widest mb-3 sm:mb-4 block"
-                style={{ fontWeight: 600, fontSize: "12px" }}
-                initial={{ opacity: 0, x: -20 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                The Story
-              </motion.span>
-              <motion.h2
-                className="text-white font-['Manrope',sans-serif] mb-6 sm:mb-8 tracking-tight"
-                style={{
-                  fontSize: "clamp(26px, 5vw, 44px)",
-                  fontWeight: 700,
-                  lineHeight: 1.15,
-                }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.7, delay: 0.3 }}
-              >
-                I build identities that drive{" "}
-                <br className="hidden sm:block" />
-                <span className="italic text-[#BFFE5F]">
-                  real business growth.
-                </span>
-              </motion.h2>
-              <motion.div
-                className="space-y-4 sm:space-y-6 text-[#A1A1AA] font-['Inter',sans-serif]"
-                style={{ fontSize: "clamp(15px, 3.5vw, 18px)", lineHeight: 1.7 }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.7, delay: 0.4 }}
-              >
-                <p>
-                  Hi, I'm Iyanuoluwa. As a dedicated Visual Identity and Social
-                  Media Designer, my core mission is simple:{" "}
-                  <strong className="text-white" style={{ fontWeight: 500 }}>
-                    I help my clients increase their online sales through
-                    minimal, bold, and functional designs.
-                  </strong>
-                </p>
-                <p>
-                  I believe that good design is far more than just
-                  aesthetics—it's a strategic tool. By crafting compelling brand
-                  identities and structured visual systems, I create
-                  scroll-stopping experiences that build instant trust, capture
-                  attention, and ultimately convert your audience into loyal
-                  customers.
-                </p>
-              </motion.div>
-
-              <div
-                ref={statsRef}
-                className="mt-8 sm:mt-10 grid grid-cols-3 gap-4 sm:gap-6 pt-8 sm:pt-10 border-t border-white/10"
-              >
-                {stats.map((stat, i) => (
-                  <motion.div
-                    key={stat.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={statsInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6, delay: 0.1 * i }}
-                  >
-                    <h4
-                      className="text-white font-['Manrope',sans-serif]"
-                      style={{ fontSize: "clamp(24px, 5vw, 30px)", fontWeight: 700 }}
-                    >
-                      {stat.text ? (
-                        stat.text
-                      ) : (
-                        <CountUp
-                          target={stat.value}
-                          suffix={stat.suffix}
-                          start={statsInView}
-                        />
-                      )}
-                    </h4>
-                    <p
-                      className="text-[#A1A1AA] mt-1 font-['Inter',sans-serif]"
-                      style={{ fontSize: "clamp(11px, 2.5vw, 14px)" }}
-                    >
-                      {stat.label}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            {/* Visual Element */}
-            <motion.div
-              className="w-full lg:w-[380px] shrink-0"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.8, delay: 0.5 }}
-            >
-              <div className="w-full aspect-square rounded-[1.5rem] sm:rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/[0.03] to-transparent flex items-center justify-center p-8 sm:p-10 text-center relative overflow-hidden shadow-2xl">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(191,254,95,0.15),transparent_50%)]" />
-                <p
-                  className="font-['Manrope',sans-serif] text-white/90 relative z-10"
-                  style={{
-                    fontSize: "clamp(20px, 4vw, 30px)",
-                    fontWeight: 500,
-                    lineHeight: 1.4,
-                  }}
-                >
-                  "Design is the <br /> silent ambassador <br /> of your brand."
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </GlassCard>
+    <div ref={ref} className="p-8 bg-neutral-900/30 border border-neutral-800 rounded-2xl flex flex-col justify-center transition-all hover:border-neutral-600">
+      <div className="text-5xl font-mono font-semibold text-white mb-2 tracking-tighter">
+        {prefix}{value}{suffix}
       </div>
-    </motion.section>
+      <div className="text-xs text-neutral-500 uppercase tracking-widest mt-2 leading-relaxed">
+        {label}
+      </div>
+    </div>
   );
-}
+};
+
+// --- 2. ABOUT SECTION COMPONENT ---
+export const AboutMe = () => {
+  return (
+    <section id="about" className="w-full max-w-5xl mx-auto py-24 px-6 md:px-12 flex flex-col gap-16 animate-fade-in relative z-10">
+      <div className="flex flex-col md:flex-row gap-12 justify-between items-start">
+        <div className="md:w-1/2 space-y-6">
+          <h2 className="text-4xl text-white tracking-tight">About Me</h2>
+          <p className="text-neutral-400 leading-relaxed text-sm md:text-base">
+            I am a Strategic Visual Identity Designer with over 5 years of experience building cohesive brand narratives and high-converting marketing campaigns. I don't just design beautiful graphics; I approach every project with a dual lens—ensuring pixel-perfect aesthetic excellence while aligning every visual decision with overarching business goals.
+          </p>
+          <p className="text-neutral-400 leading-relaxed text-sm md:text-base">
+            Whether I am conceptualizing a new workshop campaign, designing scalable layouts in Figma, or crafting high-stakes pitch decks, my focus is always on elevating brand perception and driving tangible growth.
+          </p>
+
+          <div className="flex items-center gap-4 mt-2 mb-2 bg-neutral-900/50 border border-neutral-800 w-fit px-4 py-2.5 rounded-full backdrop-blur-sm">
+            <span className="text-[10px] font-mono font-semibold text-neutral-500 uppercase tracking-widest flex items-center gap-1.5">
+              <Globe className="w-3.5 h-3.5 text-[#ccff00]" /> Global Experience
+            </span>
+            <div className="flex gap-2.5 items-center">
+              <img src="https://flagcdn.com/w40/gb.png" alt="United Kingdom" className="w-4 h-4 rounded-full object-cover hover:opacity-60 hover:grayscale transition-all duration-300 cursor-help" title="United Kingdom" />
+              <img src="https://flagcdn.com/w40/us.png" alt="United States" className="w-4 h-4 rounded-full object-cover hover:opacity-60 hover:grayscale transition-all duration-300 cursor-help" title="United States" />
+              <img src="https://flagcdn.com/w40/ng.png" alt="Nigeria" className="w-4 h-4 rounded-full object-cover hover:opacity-60 hover:grayscale transition-all duration-300 cursor-help" title="Nigeria" />
+              <img src="https://flagcdn.com/w40/lr.png" alt="Liberia" className="w-4 h-4 rounded-full object-cover hover:opacity-60 hover:grayscale transition-all duration-300 cursor-help" title="Liberia" />
+            </div>
+          </div>
+          
+          <Link to="/resume" className="group mt-4 inline-flex items-center gap-3 px-6 py-3 bg-white text-black text-sm font-medium rounded-full hover:bg-neutral-200 transition-all duration-300">
+            View Full CV 
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
+
+        <div className="md:w-1/2 grid grid-cols-2 gap-4 w-full">
+          <AnimatedStat end={500} suffix="+" label={<>App Downloads<br/>(MyPay)</>} />
+          <AnimatedStat prefix="₦" end={1} suffix="M" label={<>Revenue Generated<br/>(CIH)</>} />
+          <AnimatedStat end={50} suffix="%" label={<>Over Attendance<br/>(Genevic)</>} />
+          <AnimatedStat end={30} label={<>Prospects / Week<br/>(Solacx)</>} />
+        </div>
+      </div>
+    </section>
+  );
+};

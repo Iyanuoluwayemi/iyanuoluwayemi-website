@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
+import RotatingText from "./RotatingText";
 import { Link } from "react-router";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
@@ -62,25 +63,33 @@ export function HeroSection() {
           </div>
         </motion.div>
 
-        {/* Headline */}
         <motion.h1
           variants={itemVariants}
-          className="text-center mb-5 sm:mb-6 font-['Manrope',sans-serif] max-w-[900px] px-2 text-[clamp(36px,10vw,88px)] font-bold leading-[1.05] tracking-tight"
+          className="text-center font-semibold tracking-tight text-[#ccff00] max-w-4xl mx-auto text-4xl sm:text-5xl md:text-6xl leading-[1.15] md:leading-[1.2] mb-5 sm:mb-6 block whitespace-pre-wrap break-words"
         >
-          <span className="text-white block">Minimalism that</span>
-          {/* OPTIMIZATION 2: Text gradient converted to Tailwind */}
-          <span className="block bg-gradient-to-br from-white to-[#BFFE5F] bg-clip-text text-transparent">
-            converts.
+          Creative Brand Strategy To Build, Elevate, And Increase Sales For
+          <span className="text-white font-mono flex items-center justify-center mt-4 md:mt-6">
+            <RotatingText
+              texts={['Ambitious Startups', 'Scaling Businesses', 'Visionary Founders', 'Tech Products', 'Established Brands', 'Service Providers']}
+              mainClassName="text-white overflow-hidden py-1 justify-center align-middle inline-flex mx-2"
+              staggerFrom={"last"}
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "-120%" }}
+              staggerDuration={0}
+              splitLevelClassName="overflow-hidden"
+              transition={{ type: "spring", damping: 30, stiffness: 400 }}
+              rotationInterval={3000}
+            />
           </span>
         </motion.h1>
 
         {/* Subheadline */}
         <motion.p
           variants={itemVariants}
-          className="text-[#A1A1AA] text-center max-w-[600px] mb-8 sm:mb-10 font-['Inter',sans-serif] px-2 text-[clamp(15px,4vw,18px)] leading-relaxed font-normal"
+          className="text-[#A1A1AA] text-center max-w-[800px] mb-8 sm:mb-10 font-['Inter',sans-serif] px-4 text-[clamp(15px,4vw,18px)] leading-relaxed font-normal"
         >
-          Crafting visual identities and social media designs that raise brand
-          visibility, drive real results, and elevate brand perception.
+          I am Iyanuoluwa Oluwayemi, a Strategic Visual Identity Designer. I translate your business goals into premium, high-converting visual experiences that ensure your brand is seen, bold, trusted, and undeniably wanted.
         </motion.p>
 
         {/* Buttons */}

@@ -100,9 +100,8 @@ export function Navigation() {
             {/* CTA */}
             <Link
               to="/enquiry"
-              className="hidden sm:inline-flex px-6 py-2.5 rounded-full text-[14px] text-[#BFFE5F] transition-all duration-300 hover:scale-105 hover:bg-[#BFFE5F]/10 cursor-pointer font-['Inter',sans-serif]"
+              className="hidden sm:inline-flex px-6 py-2.5 rounded-full text-[14px] text-[#BFFE5F] transition-all duration-300 hover:scale-105 hover:bg-[#BFFE5F]/10 cursor-pointer font-mono font-semibold"
               style={{
-                fontWeight: 500,
                 backgroundColor: "rgba(20, 20, 22, 0.45)",
                 backdropFilter: "blur(32px)",
                 border: "1px solid rgba(255, 255, 255, 0.1)",
@@ -187,8 +186,8 @@ export function Navigation() {
               <Link
                 to="/enquiry"
                 onClick={() => setMobileOpen(false)}
-                className="flex items-center justify-center w-full px-6 py-4 bg-[#BFFE5F] text-[#02403D] rounded-full transition-all duration-300 hover:scale-105 font-['Inter',sans-serif]"
-                style={{ fontSize: "16px", fontWeight: 600 }}
+                className="flex items-center justify-center w-full px-6 py-4 bg-[#BFFE5F] text-[#02403D] rounded-full transition-all duration-300 hover:scale-105 font-mono font-semibold"
+                style={{ fontSize: "16px" }}
               >
                 Start a Project
               </Link>
