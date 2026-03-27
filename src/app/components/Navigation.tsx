@@ -3,7 +3,7 @@ import { MapPin, Menu, X } from "lucide-react";
 import { Link } from "react-router";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
-const navLinks = ["About", "Work", "Services", "Contact"];
+const navLinks = ["About", "Work", "Services", "Contact", "Reviews"];
 
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
@@ -40,9 +40,8 @@ export function Navigation() {
   return (
     <>
       <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-          scrolled ? "py-3" : "py-5"
-        }`}
+        className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? "py-3" : "py-5"
+          }`}
         style={{
           backgroundColor: scrolled
             ? "rgba(5, 5, 5, 0.7)"

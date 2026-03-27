@@ -7,23 +7,23 @@ const services = [
   {
     id: 1,
     icon: Share2,
-    title: "Social Media Designs",
+    title: "Social Media Design & Content Strategy",
     description:
-      "Stop the scroll and capture attention. I design strategic, minimalist social assets engineered to skyrocket engagement, build brand authority, and drive measurable sales for ambitious brands.",
+      "I design strategic, minimalist social media assets engineered to skyrocket engagement and build brand authority. Whether you are a startup or an established business, my designs are crafted to drive measurable sales and high-converting traffic across Instagram, LinkedIn, and X.",
   },
   {
     id: 2,
     icon: Palette,
-    title: "Strategic Branding",
+    title: "Strategic Brand Identity & Visual Branding",
     description:
-      "Your brand is your most valuable asset. I build premium, timeless identities that command higher prices, establish instant trust, and position you as the undisputed leader in your industry.",
+      "I build premium, timeless visual identities that allow you to command higher prices and establish instant trust. From curated brand strategies to full identity systems, I position your business as the undisputed leader in your industry, helping you become seen, bold, and wanted.",
   },
   {
     id: 3,
     icon: Target,
-    title: "Click-Magnet Thumbnails",
+    title: "High-CTR YouTube Thumbnails & Ad Creative",
     description:
-      "First impressions dictate your success. I craft bold, hyper-optimized thumbnails for YouTube and social platforms guaranteed to maximize your CTR, hook viewers instantly, and exponentially grow your audience.",
+      "I craft bold, hyper-optimized YouTube thumbnails and social media ad creatives guaranteed to maximize your Click-Through Rate (CTR). By combining psychological triggers with premium design, I help creators and brands hook viewers instantly and exponentially grow their reach.",
   },
 ];
 
@@ -52,13 +52,13 @@ export function Services() {
           </div>
 
           <p
-            className="uppercase tracking-widest mb-3 sm:mb-4 font-['Inter',sans-serif] text-[#BFFE5F]"
+            className="uppercase tracking-widest mb-3 sm:mb-4 font-['Geist',sans-serif] text-[#BFFE5F]"
             style={{ fontSize: "clamp(12px, 3vw, 14px)", fontWeight: 700 }}
           >
             What I Do
           </p>
           <h2
-            className="text-white font-['Manrope',sans-serif] tracking-tight"
+            className="text-white font-['Geist',sans-serif] tracking-tight"
             style={{
               fontSize: "clamp(28px, 5vw, 48px)",
               fontWeight: 700,
@@ -85,13 +85,13 @@ export function Services() {
                   <item.icon className="w-6 h-6 sm:w-8 sm:h-8 text-[#BFFE5F] stroke-[1.5]" />
                 </div>
                 <h3
-                  className="text-white mb-3 sm:mb-4 font-['Manrope',sans-serif]"
+                  className="text-white mb-3 sm:mb-4 font-['Geist',sans-serif]"
                   style={{ fontSize: "clamp(20px, 4vw, 24px)", fontWeight: 600 }}
                 >
                   {item.title}
                 </h3>
                 <p
-                  className="text-[#A1A1AA] font-['Inter',sans-serif]"
+                  className="text-[#A1A1AA] font-['Geist mono',sans-serif]"
                   style={{
                     fontSize: "clamp(14px, 3.5vw, 16px)",
                     lineHeight: 1.7,

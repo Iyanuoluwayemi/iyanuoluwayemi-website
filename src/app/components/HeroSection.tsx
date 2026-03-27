@@ -1,9 +1,12 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
 import { motion, type Variants } from "motion/react";
-import RotatingText from "./RotatingText";
 import { Link } from "react-router";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+
+// IMPORT THE NEW COMPONENTS
+import ShinyText from "../../component/ShinyText";
+import DecryptedText from "../../component/DecryptedText";
 
 const profileUrl =
   "https://4mrv3lw9pg.ucarecd.net/dded3849-bb01-43dc-803a-04e3d6958411/-/preview/845x1000/";
@@ -28,23 +31,23 @@ const containerVariants: Variants = {
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { duration: 0.8, ease: "easeOut" as const } 
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: "easeOut" as const }
   },
 };
 
 export function HeroSection() {
   return (
     <section className="relative min-h-[100dvh] flex flex-col items-center justify-center px-4 sm:px-6 pt-24 sm:pt-32 pb-10 sm:pb-16 z-10 overflow-hidden">
-      
+
       {/* Container orchestrates the staggered children animations */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="flex flex-col items-center z-20"
+        className="flex flex-col items-center z-20 w-full"
       >
         {/* Profile Orb */}
         <motion.div
@@ -64,34 +67,42 @@ export function HeroSection() {
           </div>
         </motion.div>
 
+        {/* The Massive Shiny H1 */}
         <motion.h1
           variants={itemVariants}
-          className="text-center font-semibold tracking-tight text-[#ccff00] max-w-4xl mx-auto text-4xl sm:text-5xl md:text-6xl leading-[1.15] md:leading-[1.2] mb-5 sm:mb-6 block whitespace-pre-wrap break-words"
+          className="text-center font-bold tracking-tight max-w-5xl mx-auto text-4xl sm:text-5xl md:text-6xl lg:text-[72px] leading-[1.1] md:leading-[1.1] mb-6 block"
         >
-          Creative Brand Strategy To Build, Elevate, And Increase Sales For
-          <span className="text-white font-mono flex items-center justify-center mt-4 md:mt-6">
-            <RotatingText
-              texts={['Ambitious Startups', 'Scaling Businesses', 'Visionary Founders', 'Tech Products', 'Established Brands', 'Service Providers']}
-              mainClassName="text-white overflow-hidden py-1 justify-center align-middle inline-flex mx-2"
-              staggerFrom={"last"}
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              exit={{ y: "-120%" }}
-              staggerDuration={0}
-              splitLevelClassName="overflow-hidden"
-              transition={{ type: "spring", damping: 30, stiffness: 400 }}
-              rotationInterval={3000}
-            />
-          </span>
+          <ShinyText
+            text="Strategic Brand Design to Help Your Business Get Seen and Trusted."
+            speed={2.7}
+            delay={0.4}
+            color="#BFFE5F"
+            shineColor="#ffffff"
+            spread={85}
+            direction="left"
+            yoyo={false}
+            pauseOnHover={false}
+            disabled={false}
+          />
         </motion.h1>
 
-        {/* Subheadline */}
-        <motion.p
+        {/* The Decrypted Subheadline */}
+        <motion.div
           variants={itemVariants}
-          className="text-[#A1A1AA] text-center max-w-[800px] mb-8 sm:mb-10 font-['Inter',sans-serif] px-4 text-[clamp(15px,4vw,18px)] leading-relaxed font-normal"
+          className="text-center max-w-[800px] mb-8 sm:mb-12 px-4"
         >
-          I am Iyanuoluwa Oluwayemi, a Strategic Visual Identity Designer. I translate your business goals into premium, high-converting visual experiences that ensure your brand is seen, bold, trusted, and undeniably wanted.
-        </motion.p>
+          <DecryptedText
+            text="Become the top choice in your industry. I help ambitious businesses scale through Strategic Brand Design and Identity Systems curated to build deep trust and undeniable market demand."
+            animateOn="view"
+            revealDirection="start"
+            sequential={true}
+            speed={35}
+            maxIterations={15}
+            className="text-[#A1A1AA] font-['Inter',sans-serif] text-[clamp(15px,4vw,18px)] leading-relaxed font-normal"
+            encryptedClassName="text-[#BFFE5F]/60 font-mono text-[clamp(15px,4vw,18px)] leading-relaxed"
+            parentClassName="text-center"
+          />
+        </motion.div>
 
         {/* Buttons */}
         <motion.div

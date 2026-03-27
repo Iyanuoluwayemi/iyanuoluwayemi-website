@@ -49,7 +49,7 @@ export function SkillsMarquee() {
           <div key={i} className="flex items-center gap-4 sm:gap-6 mx-3 sm:mx-4">
             <StarIcon />
             <span
-              className="text-[#02403D] uppercase font-['Inter',sans-serif] tracking-wider"
+              className="text-[#02403D] uppercase font-['Geist',sans-serif] tracking-wider"
               style={{ fontSize: "clamp(13px, 3.5vw, 16px)", fontWeight: 800 }}
             >
               {skill}

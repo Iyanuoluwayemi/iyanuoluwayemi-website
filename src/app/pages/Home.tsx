@@ -8,7 +8,7 @@ import { Services } from "../components/Services";
 import { CTASection } from "../components/CTASection";
 import { InteractiveLogos } from "../components/InteractiveLogos";
 import { Footer } from "../components/Footer";
-
+import { TestimonialsSection } from '../components/TestimonialsSection';
 export default function Home() {
   return (
     <div
@@ -59,7 +59,7 @@ export default function Home() {
           grainAnimated={false}
         />
       </div>
-      
+
       <div className="relative z-10 flex flex-col min-h-screen">
         <Navigation />
         <main className="w-full">
@@ -70,6 +70,7 @@ export default function Home() {
             <SelectedWork />
             <Services />
             <CTASection />
+            <TestimonialsSection />
             <InteractiveLogos />
           </div>
         </main>
