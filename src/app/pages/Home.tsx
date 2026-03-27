@@ -3,7 +3,7 @@ import { Navigation } from "../components/Navigation";
 import { HeroSection } from "../components/HeroSection";
 import { SkillsMarquee } from "../components/SkillsMarquee";
 import { AboutMe } from "../components/AboutMe";
-import { SelectedWork } from "../components/SelectedWork";
+import { ProjectShowcase } from "../components/ProjectShowcase";
 import { Services } from "../components/Services";
 import { CTASection } from "../components/CTASection";
 import { InteractiveLogos } from "../components/InteractiveLogos";
@@ -67,7 +67,7 @@ export default function Home() {
           <div className="bg-[#030803]/95">
             <SkillsMarquee />
             <AboutMe />
-            <SelectedWork />
+            <ProjectShowcase />
             <Services />
             <CTASection />
             <TestimonialsSection />
